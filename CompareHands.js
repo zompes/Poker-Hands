@@ -40,10 +40,18 @@ module.exports = class CompareHands {
   }
 
   static isFourOfAKind(hand) { // TODO!
+
+    this.sortByRank(hand);
+
+
     return 0;
   }
 
   static isFullHouse(hand) { // TODO!
+
+    this.sortByRank(hand);
+
+    
     return 0;
   }
 
@@ -85,18 +93,52 @@ module.exports = class CompareHands {
   }
 
   static isThreeOfAKind(hand) { // TODO!
-    return 0;
+    
+    this.sortByRank(hand);
+
+    let ranks = '';
+    for (let card of hand.cards) {
+      ranks += card.rank;
+    }
+
+    const rankCounts = {};
+    for (let i = 0; i < hand.length; i++) {
+      const rank = hand[i].substring(0, hand[i].length - 1);
+      rankCounts[rank] = (rankCounts[rank] || 0) + 1;
+    }
+    
+    for (const rank in rankCounts) {
+      if (rankCounts[rank] === 3) {
+        return true;
+      }
+      else {
+        return "Not three of a kind, falsy.";
+      }
+    }
+    //return 0;
   }
 
   static isTwoPair(hand) { // TODO!
+    
+    this.sortByRank(hand);
+
+
     return 0;
   }
 
   static isOnePair(hand) { // TODO!
+    
+    this.sortByRank(hand);
+
+
     return 0;
   }
 
   static isHighestCard(hand) { // TODO!
+    
+    this.sortByRank(hand);
+
+
     return 0;
   }
 
