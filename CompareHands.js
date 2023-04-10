@@ -93,22 +93,24 @@ module.exports = class CompareHands {
   }
 
   static isThreeOfAKind(hand) { // TODO!
-    
+    // sort from low to high
     this.sortByRank(hand);
-
+    // get the ranks of the cards
     let ranks = '';
     for (let card of hand.cards) {
       ranks += card.rank;
     }
 
+    //count the number of occurrences of each rank
     const rankCounts = {};
     for (let i = 0; i < hand.length; i++) {
       const rank = hand[i].substring(0, hand[i].length - 1);
       rankCounts[rank] = (rankCounts[rank] || 0) + 1;
     }
     
+    //Check if there are three of a kind
     for (const rank in rankCounts) {
-      if (rankCounts[rank] === 3) {
+      if (rankCounts[rank] == 3) {
         return true;
       }
       else {
