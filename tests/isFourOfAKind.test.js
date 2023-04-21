@@ -7,6 +7,11 @@ test('Test that four of a kind returns truthy if four of a kind', () => {
   expect(CompareHands.isFourOfAKind(hand)).toBeTruthy();
 });
 
+test('Test that isFourOfAKind returns falsey if not four of a kind', () => {
+  let hand = new Hand('♥A', '♦2', '♣A', '♠3', '♠K');
+  expect(CompareHands.isFourOfAKind(hand)).toBeFalsy();
+});
+
 test('Checks that the highest hand with FourOfAKind returns as ToBeGreaterThan', () => {
   let hand1 = new Hand('♥7', '♦7', '♣7', '♠3', '♠7');
   let hand2 = new Hand('♥8', '♦8', '♣8', '♠3', '♠8');

@@ -7,6 +7,11 @@ test('Test that TwoPair returns truthy if two pair', () => {
   expect(CompareHands.isTwoPair(hand)).toBeTruthy();
 });
 
+test('Test that isTwoPair returns falsey if not two pair', () => {
+  let hand = new Hand('♥A', '♦2', '♣Q', '♠3', '♠K');
+  expect(CompareHands.isTwoPair(hand)).toBeFalsy();
+});
+
 test('Checks that the highest hand with isTwoPair returns as ToBeGreaterThan', () => {
   let hand1 = new Hand('♥5', '♦5', '♣K', '♦K', '♠A');
   let hand2 = new Hand('♥6', '♦6', '♣A', '♣A', '♠T');

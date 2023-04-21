@@ -104,31 +104,13 @@ module.exports = class CompareHands {
     return this.rankToPoint(ranks[4]);
   }
 
-  static isThreeOfAKind(hand) { // TODO!
-
-    //count the number of occurrences of each rank
-    /*const rankCounts = {};
-    for (let i = 0; i < hand.length; i++) {
-      const rank = hand[i].substring(0, hand[i].length - 1);
-      rankCounts[rank] = (rankCounts[rank] || 0) + 1;
-    }*/
-
+  static isThreeOfAKind(hand) {
     let [ranks, occurences] = this.rankOccurences(hand);
     let rankOfThrees = ranks[occurences.indexOf(3)];
     if (!rankOfThrees) { return 0; }
     let kickers = hand.cards.filter(({ rank }) => rank !== rankOfThrees);
     let mainScore = this.rankToPoint(rankOfThrees);
     return this.scoreWithKickers(mainScore, kickers);
-
-    //Check if there are three of a kind
-    /*for (const rank in rankCounts) {
-      if (rankCounts[rank] == 3) {
-        return true;
-      }
-      else {
-        return 0;
-      }
-    }*/
   }
 
   static isTwoPair(hand) {

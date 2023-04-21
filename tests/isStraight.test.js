@@ -1,10 +1,15 @@
 const Hand = require('../Hand');
 const CompareHands = require('../CompareHands');
 const suits = '♥♦♣♠';
-//
+
 test('check that isStraight returns truthy if straight', () => {
   let hand = new Hand('♥9', '♦8', '♣7', '♥5', '♦6');
   expect(CompareHands.isStraight(hand)).toBeTruthy();
+});
+
+test('Test that isStraight returns falsey if not staight', () => {
+  let hand = new Hand('♥A', '♦2', '♣A', '♠3', '♠K');
+  expect(CompareHands.isStraight(hand)).toBeFalsy();
 });
 
 test('Checks that the highest hand with isStraight returns as ToBeGreaterThan', () => {
