@@ -138,4 +138,8 @@ module.exports = class CompareHands {
     return this.scoreWithKickers(0, hand.cards);
   }
 
+  static hasDuplicates(hand){
+    hand = hand.cards.map(singleCard => singleCard.suit + singleCard.rank);
+    return [...new Set(hand)].length < 5;
+  }
 }

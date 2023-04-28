@@ -2,6 +2,17 @@ const Hand = require('../Hand');
 const CompareHands = require('../CompareHands');
 const suits = '♥♦♣♠';
 
+test('No duplicates', () => {
+  let hand = new Hand('♥4', '♦2', '♣A', '♠3', '♠K');
+  expect(CompareHands.hasDuplicates(hand)).toBeFalsy();
+});
+
+test('Has duplicates', () => {
+  let hand = new Hand('♥4', '♥4', '♣A', '♠3', '♠K');
+  expect(CompareHands.hasDuplicates(hand)).toBeTruthy();
+});
+
+
 test('Test that HighestCard returns truthy if highest card', () => {
   let hand = new Hand('♥4', '♦2', '♣A', '♠3', '♠K');
   expect(CompareHands.isHighestCard(hand)).toBeTruthy();

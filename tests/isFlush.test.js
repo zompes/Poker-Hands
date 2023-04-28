@@ -2,6 +2,16 @@ const Hand = require('../Hand');
 const CompareHands = require('../CompareHands');
 const suits = '♥♦♣♠';
 
+test('No duplicates', () => {
+  let hand = new Hand('♣2', '♣6', '♥4', '♣8', '♣7');
+  expect(CompareHands.hasDuplicates(hand)).toBeFalsy();
+});
+
+test('Has duplicates', () => {
+  let hand = new Hand('♣2', '♣2', '♥4', '♣8', '♣7');
+  expect(CompareHands.hasDuplicates(hand)).toBeTruthy();
+});
+
 test('check that isFlush returns truthy if flush', () => {
   for (let suit of suits) {
     let hand = new Hand(suit + '2', suit + '6', suit + '4', suit + '8', suit + '7');

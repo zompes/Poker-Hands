@@ -2,6 +2,17 @@ const Hand = require('../Hand');
 const CompareHands = require('../CompareHands');
 const suits = '♥♦♣♠';
 
+test('No duplicates', () => {
+  let hand = new Hand('♥7', '♦3', '♣7', '♠3', '♠6');
+  expect(CompareHands.hasDuplicates(hand)).toBeFalsy();
+});
+
+test('Has duplicates', () => {
+  let hand = new Hand('♥7', '♥7', '♣7', '♠3', '♠6');
+  expect(CompareHands.hasDuplicates(hand)).toBeTruthy();
+});
+
+
 test('Test that TwoPair returns truthy if two pair', () => {
   let hand = new Hand('♥7', '♦3', '♣7', '♠3', '♠6');
   expect(CompareHands.isTwoPair(hand)).toBeTruthy();

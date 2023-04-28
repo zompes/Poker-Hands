@@ -2,6 +2,16 @@ const Hand = require('../Hand');
 const CompareHands = require('../CompareHands');
 const suits = '♥♦♣♠';
 
+test('No duplicates', () => {
+  let hand = new Hand('♥7', '♦2', '♣7', '♠2', '♠7');
+  expect(CompareHands.hasDuplicates(hand)).toBeFalsy();
+});
+
+test('Has duplicates', () => {
+  let hand = new Hand('♥7', '♥7', '♣7', '♠2', '♠7');
+  expect(CompareHands.hasDuplicates(hand)).toBeTruthy();
+});
+
 test('Test that Fullhouse returns truthy if full house', () => {
   let hand = new Hand('♥7', '♦2', '♣7', '♠2', '♠7');
   expect(CompareHands.isFullHouse(hand)).toBeTruthy();
