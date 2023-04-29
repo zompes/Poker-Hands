@@ -23,6 +23,18 @@ test('Test that isStraight returns falsey if not staight', () => {
   expect(CompareHands.isStraight(hand)).toBeFalsy();
 });
 
+test('Has duplicates for both hands', () => {
+  let hand1 = new Hand('♥2', '♦3', '♣4', '♦5', '♠6');
+  let hand2 = new Hand('♣3', '♣6', '♥2', '♣T', '♣A');
+expect(CompareHands.hasDuplicatesHands(hand1, hand2)).toBeTruthy();
+});
+
+test('No duplicates for both hands', () => {
+  let hand1 = new Hand('♥2', '♦3', '♣4', '♦5', '♠6');
+  let hand2 = new Hand('♣3', '♣A', '♥A', '♣2', '♣Q');
+expect(CompareHands.hasDuplicatesHands(hand1, hand2)).toBeFalsy();
+});
+
 test('Checks that the highest hand with isStraight returns as ToBeGreaterThan', () => {
   let hand1 = new Hand('♥2', '♦3', '♣4', '♦5', '♠6');
   let hand2 = new Hand('♥5', '♦6', '♣7', '♣8', '♠9');

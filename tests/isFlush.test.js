@@ -24,6 +24,18 @@ test('check that isFlush returns falsey if not flush', () => {
   expect(CompareHands.isFlush(hand)).toBeFalsy();
 });
 
+test('Has duplicates for both hands', () => {
+  let hand1 = new Hand('♣2', '♣6', '♥4', '♣8', '♣7');
+  let hand2 = new Hand('♣3', '♣6', '♥5', '♣T', '♣A');
+expect(CompareHands.hasDuplicatesHands(hand1, hand2)).toBeTruthy();
+});
+
+test('No duplicates for both hands', () => {
+  let hand1 = new Hand('♣2', '♣6', '♥4', '♣8', '♣7');
+  let hand2 = new Hand('♣3', '♣4', '♥5', '♣K', '♣Q');
+expect(CompareHands.hasDuplicatesHands(hand1, hand2)).toBeFalsy();
+});
+
 test('check that isFlush returns a higher score for a stronger hand (if two hands but with flush)', () => {
   let hand1 = new Hand('♣2', '♣6', '♣4', '♣8', '♣7');
   let hand2 = new Hand('♦T', '♦9', '♦5', '♦Q', '♦A');

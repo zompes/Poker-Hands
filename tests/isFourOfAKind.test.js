@@ -22,6 +22,18 @@ test('Test that isFourOfAKind returns falsey if not four of a kind', () => {
   expect(CompareHands.isFourOfAKind(hand)).toBeFalsy();
 });
 
+test('Has duplicates', () => {
+  let hand1 = new Hand('♥7', '♦7', '♣7', '♠3', '♠7');
+  let hand2 = new Hand('♥7', '♥K', '♣A', '♠8', '♠2');
+expect(CompareHands.hasDuplicatesHands(hand1, hand2)).toBeTruthy();
+});
+
+test('No duplicates', () => {
+  let hand1 = new Hand('♥7', '♦7', '♣7', '♠3', '♠7');
+  let hand2 = new Hand('♥T', '♥K', '♣A', '♠8', '♠2');
+expect(CompareHands.hasDuplicatesHands(hand1, hand2)).toBeFalsy();
+});
+
 test('Checks that the highest hand with FourOfAKind returns as ToBeGreaterThan', () => {
   let hand1 = new Hand('♥7', '♦7', '♣7', '♠3', '♠7');
   let hand2 = new Hand('♥8', '♦8', '♣8', '♠3', '♠8');

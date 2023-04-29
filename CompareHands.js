@@ -142,4 +142,12 @@ module.exports = class CompareHands {
     hand = hand.cards.map(singleCard => singleCard.suit + singleCard.rank);
     return [...new Set(hand)].length < 5;
   }
+
+  // Got it to work after much blood, sweat, tears and screaming. A lot of screaming.
+  static hasDuplicatesHands(hand1, hand2) {
+    const allCards = [...hand1.cards, ...hand2.cards];
+    const cardStrings = allCards.map(card => card.suit + card.rank);
+    const uniqueCards = new Set(cardStrings);
+    return uniqueCards.size < allCards.length;
+  }
 }

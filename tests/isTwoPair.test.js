@@ -23,6 +23,18 @@ test('Test that isTwoPair returns falsey if not two pair', () => {
   expect(CompareHands.isTwoPair(hand)).toBeFalsy();
 });
 
+test('Has duplicates for both hands', () => {
+  let hand1 = new Hand('♥5', '♦5', '♣K', '♦K', '♠A');
+  let hand2 = new Hand('♣3', '♣6', '♥5', '♣T', '♣A');
+expect(CompareHands.hasDuplicatesHands(hand1, hand2)).toBeTruthy();
+});
+
+test('No duplicates for both hands', () => {
+  let hand1 = new Hand('♥A', '♦A', '♣A', '♦K', '♠A');
+  let hand2 = new Hand('♣T', '♣Q', '♥K', '♣K', '♣J');
+expect(CompareHands.hasDuplicatesHands(hand1, hand2)).toBeFalsy();
+});
+
 test('Checks that the highest hand with isTwoPair returns as ToBeGreaterThan', () => {
   let hand1 = new Hand('♥5', '♦5', '♣K', '♦K', '♠A');
   let hand2 = new Hand('♥6', '♦6', '♣A', '♣A', '♠T');

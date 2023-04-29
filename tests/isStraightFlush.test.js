@@ -23,6 +23,18 @@ test('Test that isStraight returns falsey if not straight flush', () => {
   expect(CompareHands.isStraightFlush(hand)).toBeFalsy();
 });
 
+test('Has duplicates for both hands', () => {
+  let hand1 = new Hand('♥4', '♥5', '♥6', '♥7', '♥8');
+  let hand2 = new Hand('♣3', '♣6', '♥4', '♣T', '♣A');
+expect(CompareHands.hasDuplicatesHands(hand1, hand2)).toBeTruthy();
+});
+
+test('No duplicates for both hands', () => {
+  let hand1 = new Hand('♥4', '♥5', '♥6', '♥7', '♥8');
+  let hand2 = new Hand('♣3', '♣A', '♥A', '♣2', '♣Q');
+expect(CompareHands.hasDuplicatesHands(hand1, hand2)).toBeFalsy();
+});
+
 test('Checks that the highest hand with isStraightFlush returns as ToBeGreaterThan', () => {
   let hand1 = new Hand('♥4', '♥5', '♥6', '♥7', '♥8')
   let hand2 = new Hand('♥9', '♥T', '♥J', '♥Q', '♥K');

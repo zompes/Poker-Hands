@@ -23,6 +23,18 @@ test('Test that isOnePair returns falsey if not one pair', () => {
   expect(CompareHands.isOnePair(hand)).toBeFalsy();
 });
 
+test('Has duplicates for both hands', () => {
+  let hand1 = new Hand('♥5', '♦5', '♣K', '♦2', '♠Q');
+  let hand2 = new Hand('♣3', '♣6', '♥5', '♣T', '♣A');
+expect(CompareHands.hasDuplicatesHands(hand1, hand2)).toBeTruthy();
+});
+
+test('No duplicates for both hands', () => {
+  let hand1 = new Hand('♥5', '♦5', '♣K', '♦2', '♠Q');
+  let hand2 = new Hand('♣3', '♣A', '♥A', '♣2', '♣Q');
+expect(CompareHands.hasDuplicatesHands(hand1, hand2)).toBeFalsy();
+});
+
 test('Checks that the highest hand with isOnePair returns as ToBeGreaterThan', () => {
   let hand1 = new Hand('♥5', '♦5', '♣K', '♦2', '♠Q');
   let hand2 = new Hand('♥Q', '♦Q', '♣7', '♣3', '♠5');

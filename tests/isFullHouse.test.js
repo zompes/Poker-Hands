@@ -22,6 +22,18 @@ test('Test that isFullHouse returns falsey if not full house', () => {
   expect(CompareHands.isFullHouse(hand)).toBeFalsy();
 });
 
+test('Has duplicates for both hands', () => {
+  let hand1 = new Hand('♥5', '♦5', '♣5', '♦2', '♠2');
+  let hand2 = new Hand('♣3', '♣6', '♥5', '♣T', '♣A');
+expect(CompareHands.hasDuplicatesHands(hand1, hand2)).toBeTruthy();
+});
+
+test('No duplicates for both hands', () => {
+  let hand1 = new Hand('♥5', '♦5', '♣5', '♦2', '♠2');
+  let hand2 = new Hand('♣3', '♣A', '♥A', '♣K', '♣Q');
+expect(CompareHands.hasDuplicatesHands(hand1, hand2)).toBeFalsy();
+});
+
 test('Checks that the highest hand with FullHouse returns as ToBeGreaterThan', () => {
   let hand1 = new Hand('♥5', '♦5', '♣5', '♦2', '♠2');
   let hand2 = new Hand('♥7', '♦7', '♣7', '♣3', '♠3');
